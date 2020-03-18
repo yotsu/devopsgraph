@@ -108,7 +108,10 @@ ul li::before {
     border-top: 20px solid #009432;
 }
 
-.header-container,
+.header-container {
+    min-height: 75px;
+}
+
 .footer-container,
 .main aside {
     background: #009432;
@@ -118,6 +121,11 @@ ul li::before {
     color: #009432;
     width: 100%;
     text-align: center;
+    margin: 6px;
+}
+
+.title a {
+    color: #05c46b;
 }
 
 /* ==============
@@ -245,12 +253,12 @@ nav a:hover {
     WIDE: CSS3 Effects
    ==================== */
 
-    .header-container,
+/*    .header-container,
     .main aside {
         -webkit-box-shadow: 0 5px 10px #aaa;
            -moz-box-shadow: 0 5px 10px #aaa;
                 box-shadow: 0 5px 10px #aaa;
-    }
+    }*/
 
 /* ============
     WIDE: Menu
