@@ -21,6 +21,7 @@
 <div class="header-container">
     <div>
         <h1 class="title">Maturité DevOps - Mars 2020</h1>
+        <h3 class="title">14 réponses sur 43 attendues au 07/04</h3>
     </div>
 </div>
 <div class="main-container">
@@ -48,61 +49,77 @@
 
     /* Add data */
     chart.data = [{
-        "department": "DGA & BOFI",
-        "tools": 3,
-        "automation ": 1,
-        "quality": 0,
+        "department": "COMPTABILITE & FINANCE",
         "devops": 2,
-        "agile": 4
-    }, {
-        "department": "PREVOYANCE",
-        "tools": 1,
-        "automation ": 1,
-        "quality": 0,
-        "devops": 3,
-        "agile": 4
-    }, {
-        "department": "TRANSVERSE",
+        "agile": 2,
         "tools": 2,
-        "automation ": 1,
-        "quality": 0,
-        "devops": 5,
-        "agile": 3
+        "automation": 0,
+        "quality": 1,
+        "security": 0,
+    }, {
+        "department": "DIGITAL COURTAGE",
+        "devops": 4.5,
+        "agile": 5,
+        "tools": 5,
+        "automation": 5,
+        "quality": 4,
+        "security": 2.5,
     }, {
         "department": "DONNEES",
-        "tools": 2,
-        "automation ": 1,
-        "quality": 5,
-        "devops": 1,
-        "agile": 4
+        "devops": 2,
+        "agile": 3,
+        "tools": 1,
+        "automation": 2,
+        "quality": 2,
+        "security": 2,
     }, {
         "department": "EPARGNE",
-        "tools": 1,
-        "automation ": 3,
-        "quality": 0,
-        "devops": 4,
-        "agile": 5
+        "devops": 3,
+        "agile": 3,
+        "tools": 0,
+        "automation": 0,
+        "quality": 1,
+        "security": 2,
     }, {
-        "department": "SOCLES TECHNIQUES & SUPPORT",
-        "tools": 1,
-        "automation ": 4,
-        "quality": 0,
+        "department": "GESTION DES ACTIFS",
         "devops": 2,
-        "agile": 4
+        "agile": 1,
+        "tools": 1.5,
+        "automation": 1,
+        "quality": 1.5,
+        "security": 1,
+    }, {
+        "department": "IT CORPORATE",
+        "devops": 4,
+        "agile": 3,
+        "tools": 3,
+        "automation": 5,
+        "quality": 4,
+        "security": 1,
+    }, {
+        "department": "RISQUES & ACTUARIAT",
+        "devops": 3,
+        "agile": 3.5,
+        "tools": 1.5,
+        "automation": 2,
+        "quality": 2,
+        "security": 0.5,
     }, {
         "department": "SOCLES DIGITAUX",
-        "tools": 2,
-        "automation ": 1,
-        "quality": 0,
-        "devops": 2,
-        "agile": 5
+        "devops": 3,
+        "agile": 2.5,
+        "tools": 0.5,
+        "automation": 1.5,
+        "quality": 1.5,
+        "security": 1,
     }, {
-        "department": "COMPTABILITE & FINANCE",
-        "tools": 3,
-        "automation ": 1,
-        "quality": 0,
-        "devops": 2,
-        "agile": 4
+        "department": "PREVOYANCE",
+        "devops": 2.5,
+        "agile": 0.5,
+        "tools": 1,
+        "automation": 1.5,
+        "quality": 2,
+        "security": 1,
     }];
 
     /* Create axes */
@@ -115,11 +132,12 @@
     valueAxis.renderer.labels.template.verticalCenter = "bottom";
     valueAxis.renderer.labels.template.fillOpacity = 0.5;
     valueAxis.renderer.maxLabelPosition = 0.99;
+
     /* Create and configure series */
     var series1 = chart.series.push(new am4charts.RadarColumnSeries());
-    series1.dataFields.valueY = "tools";
+    series1.dataFields.valueY = "devops";
     series1.dataFields.categoryX = "department";
-    series1.name = "Outils";
+    series1.name = "DevOps";
     series1.strokeWidth = 0;
     series1.columns.template.tooltipText = "Compétence: {name}\nDomaine: {categoryX}\nMaturité: {valueY}";
     series1.sequencedInterpolation = true;
@@ -127,9 +145,9 @@
     series1.stacked = true;
 
     var series2 = chart.series.push(new am4charts.RadarColumnSeries());
-    series2.dataFields.valueY = "automation";
+    series2.dataFields.valueY = "agile";
     series2.dataFields.categoryX = "department";
-    series2.name = "Automatisation";
+    series2.name = "Agile";
     series2.strokeWidth = 0;
     series2.columns.template.tooltipText = "Compétence: {name}\nDomaine: {categoryX}\nMaturité: {valueY}";
     series2.sequencedInterpolation = true;
@@ -137,9 +155,9 @@
     series2.stacked = true;
 
     var series3 = chart.series.push(new am4charts.RadarColumnSeries());
-    series3.dataFields.valueY = "quality";
+    series3.dataFields.valueY = "tools";
     series3.dataFields.categoryX = "department";
-    series3.name = "Qualité";
+    series3.name = "Outils";
     series3.strokeWidth = 0;
     series3.columns.template.tooltipText = "Compétence: {name}\nDomaine: {categoryX}\nMaturité: {valueY}";
     series3.sequencedInterpolation = true;
@@ -147,9 +165,9 @@
     series3.stacked = true;
 
     var series4 = chart.series.push(new am4charts.RadarColumnSeries());
-    series4.dataFields.valueY = "devops";
+    series4.dataFields.valueY = "automation";
     series4.dataFields.categoryX = "department";
-    series4.name = "Culture DevOps";
+    series4.name = "Automatisation";
     series4.strokeWidth = 0;
     series4.columns.template.tooltipText = "Compétence: {name}\nDomaine: {categoryX}\nMaturité: {valueY}";
     series4.sequencedInterpolation = true;
@@ -157,14 +175,24 @@
     series4.stacked = true;
 
     var series5 = chart.series.push(new am4charts.RadarColumnSeries());
-    series5.dataFields.valueY = "agile";
+    series5.dataFields.valueY = "quality";
     series5.dataFields.categoryX = "department";
-    series5.name = "Culture Agile";
+    series5.name = "Qualité";
     series5.strokeWidth = 0;
     series5.columns.template.tooltipText = "Compétence: {name}\nDomaine: {categoryX}\nMaturité: {valueY}";
     series5.sequencedInterpolation = true;
     series5.sequencedInterpolationDelay = 100;
     series5.stacked = true;
+
+    var series6 = chart.series.push(new am4charts.RadarColumnSeries());
+    series6.dataFields.valueY = "security";
+    series6.dataFields.categoryX = "department";
+    series6.name = "Sécurité";
+    series6.strokeWidth = 0;
+    series6.columns.template.tooltipText = "Compétence: {name}\nDomaine: {categoryX}\nMaturité: {valueY}";
+    series6.sequencedInterpolation = true;
+    series6.sequencedInterpolationDelay = 100;
+    series6.stacked = true;
 
     /* Add legend */
     chart.legend = new am4charts.Legend();
