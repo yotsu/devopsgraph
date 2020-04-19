@@ -1,0 +1,207 @@
+<!-- Styles -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+    <link rel="stylesheet" href="css/normalize.min.css">
+    <link rel="stylesheet" href="css/main.css">
+
+    <!-- Resources -->
+    <script src="https://www.amcharts.com/lib/4/core.js"></script>
+    <script src="https://www.amcharts.com/lib/4/charts.js"></script>
+    <script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
+
+</head>
+
+
+<div class="header-container">
+    <div>
+        <h1 class="title">Maturité DevOps - Mars 2020</h1>
+        <h3 class="title">14 réponses sur 43 attendues au 07/04</h3>
+    </div>
+</div>
+<div class="main-container">
+    <div id="chartdiv"></div>
+</div>
+
+<script>
+    /**
+     * ---------------------------------------
+     * This demo was created using amCharts 4.
+     *
+     * For more information visit:
+     * https://www.amcharts.com/
+     *
+     * Documentation is available at:
+     * https://www.amcharts.com/docs/v4/
+     * ---------------------------------------
+     */
+
+    /* Set themes */
+    am4core.useTheme(am4themes_animated);
+
+    /* Create chart instance */
+    var chart = am4core.create("chartdiv", am4charts.RadarChart);
+
+    /* Add data */
+    chart.data = [{
+        "department": "COMPTABILITE & FINANCE",
+        "devops": 2,
+        "agile": 2,
+        "tools": 2,
+        "automation": 0,
+        "quality": 1,
+        "security": 0,
+    }, {
+        "department": "DIGITAL COURTAGE",
+        "devops": 4.5,
+        "agile": 5,
+        "tools": 5,
+        "automation": 5,
+        "quality": 4,
+        "security": 2.5,
+    }, {
+        "department": "DONNEES",
+        "devops": 2,
+        "agile": 3,
+        "tools": 1,
+        "automation": 2,
+        "quality": 2,
+        "security": 2,
+    }, {
+        "department": "EPARGNE",
+        "devops": 3,
+        "agile": 3,
+        "tools": 0,
+        "automation": 0,
+        "quality": 1,
+        "security": 2,
+    }, {
+        "department": "GESTION DES ACTIFS",
+        "devops": 2,
+        "agile": 1,
+        "tools": 1.5,
+        "automation": 1,
+        "quality": 1.5,
+        "security": 1,
+    }, {
+        "department": "IT CORPORATE",
+        "devops": 4,
+        "agile": 3,
+        "tools": 3,
+        "automation": 5,
+        "quality": 4,
+        "security": 1,
+    }, {
+        "department": "RISQUES & ACTUARIAT",
+        "devops": 3,
+        "agile": 3.5,
+        "tools": 1.5,
+        "automation": 2,
+        "quality": 2,
+        "security": 0.5,
+    }, {
+        "department": "SOCLES DIGITAUX",
+        "devops": 3,
+        "agile": 2.5,
+        "tools": 0.5,
+        "automation": 1.5,
+        "quality": 1.5,
+        "security": 1,
+    }, {
+        "department": "PREVOYANCE",
+        "devops": 2.5,
+        "agile": 0.5,
+        "tools": 1,
+        "automation": 1.5,
+        "quality": 2,
+        "security": 1,
+    }];
+
+    /* Create axes */
+    var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
+    categoryAxis.dataFields.category = "department";
+    categoryAxis.renderer.labels.template.location = 0.5;
+
+    var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+    valueAxis.renderer.labels.template.location = 1;
+    valueAxis.renderer.labels.template.verticalCenter = "bottom";
+    valueAxis.renderer.labels.template.fillOpacity = 0.5;
+    valueAxis.renderer.maxLabelPosition = 0.99;
+
+    /* Create and configure series */
+    var series1 = chart.series.push(new am4charts.RadarColumnSeries());
+    series1.dataFields.valueY = "devops";
+    series1.dataFields.categoryX = "department";
+    series1.name = "DevOps";
+    series1.strokeWidth = 0;
+    series1.columns.template.tooltipText = "Compétence: {name}\nDomaine: {categoryX}\nMaturité: {valueY}";
+    series1.sequencedInterpolation = true;
+    series1.sequencedInterpolationDelay = 100;
+    series1.stacked = true;
+
+    var series2 = chart.series.push(new am4charts.RadarColumnSeries());
+    series2.dataFields.valueY = "agile";
+    series2.dataFields.categoryX = "department";
+    series2.name = "Agile";
+    series2.strokeWidth = 0;
+    series2.columns.template.tooltipText = "Compétence: {name}\nDomaine: {categoryX}\nMaturité: {valueY}";
+    series2.sequencedInterpolation = true;
+    series2.sequencedInterpolationDelay = 100;
+    series2.stacked = true;
+
+    var series3 = chart.series.push(new am4charts.RadarColumnSeries());
+    series3.dataFields.valueY = "tools";
+    series3.dataFields.categoryX = "department";
+    series3.name = "Outils";
+    series3.strokeWidth = 0;
+    series3.columns.template.tooltipText = "Compétence: {name}\nDomaine: {categoryX}\nMaturité: {valueY}";
+    series3.sequencedInterpolation = true;
+    series3.sequencedInterpolationDelay = 100;
+    series3.stacked = true;
+
+    var series4 = chart.series.push(new am4charts.RadarColumnSeries());
+    series4.dataFields.valueY = "automation";
+    series4.dataFields.categoryX = "department";
+    series4.name = "Automatisation";
+    series4.strokeWidth = 0;
+    series4.columns.template.tooltipText = "Compétence: {name}\nDomaine: {categoryX}\nMaturité: {valueY}";
+    series4.sequencedInterpolation = true;
+    series4.sequencedInterpolationDelay = 100;
+    series4.stacked = true;
+
+    var series5 = chart.series.push(new am4charts.RadarColumnSeries());
+    series5.dataFields.valueY = "quality";
+    series5.dataFields.categoryX = "department";
+    series5.name = "Qualité";
+    series5.strokeWidth = 0;
+    series5.columns.template.tooltipText = "Compétence: {name}\nDomaine: {categoryX}\nMaturité: {valueY}";
+    series5.sequencedInterpolation = true;
+    series5.sequencedInterpolationDelay = 100;
+    series5.stacked = true;
+
+    var series6 = chart.series.push(new am4charts.RadarColumnSeries());
+    series6.dataFields.valueY = "security";
+    series6.dataFields.categoryX = "department";
+    series6.name = "Sécurité";
+    series6.strokeWidth = 0;
+    series6.columns.template.tooltipText = "Compétence: {name}\nDomaine: {categoryX}\nMaturité: {valueY}";
+    series6.sequencedInterpolation = true;
+    series6.sequencedInterpolationDelay = 100;
+    series6.stacked = true;
+
+    /* Add legend */
+    chart.legend = new am4charts.Legend();
+
+    /* Add cursor */
+    //chart.cursor = new am4charts.RadarCursor();
+
+    /* Make chart angled */
+    chart.startAngle = -170;
+    chart.endAngle = -10;
+    chart.innerRadius = am4core.percent(50);
+</script>
